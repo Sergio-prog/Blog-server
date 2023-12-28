@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="static/style.css">
+        <title>Blog: Main page</title>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+            {{ if not .logged }}
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
+            {{ else }}
+                <li><span>{{.user.Username}}</span></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            {{ end }}
+        </ul>
+        </nav>
+        <div>
+            <ul>
+                {{range .posts}}
+                    <li><a href="/{{.ID}}">{{.Title}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+    </body>
+</html>
